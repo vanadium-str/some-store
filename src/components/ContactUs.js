@@ -11,7 +11,7 @@ const ContactUs = () => {
             <img className='rounded-circle avatar mb-3' src={avatar} alt='avatar'/>
             <p className='name mb-5'>Your name</p>
             <p className='mb-0 contact'><b>
-                Phone: </b>+7-123-456-77-88
+                Phone: </b>+1-123-456-77-88
             </p>
             <p className='contact mb-5'><b>
                 E-mail: </b>yourbrand@email.com

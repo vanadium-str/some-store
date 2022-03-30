@@ -1,11 +1,19 @@
-import React from 'react';
-import inst1 from '../images/inst1.jpg';
-import inst2 from '../images/inst2.jpeg';
-import inst3 from '../images/inst3.jpg';
-import inst4 from '../images/inst4.jpg';
-import inst5 from '../images/inst5.jpg';
+import React, { useState } from 'react';
+import InstagramGallery from './InstagramGallery';
+import { Context } from '../utils/context';
+import { instaImages } from '../utils/constants';
 
 const Instagram = () => {
+
+   const [isOpen, setIsOpen] = useState(false);
+   const [currentPhoto, setCurrentPhoto] = useState('');
+
+   const openGallery = (numOfArray) => {
+    setIsOpen(true);
+    setCurrentPhoto(numOfArray);
+    document.body.style.overflow = 'hidden';
+   }
+
     return (
         <div className='backColor heightBlock'>
             <p className='head text-center pt-5'>
@@ -14,24 +22,46 @@ const Instagram = () => {
             <div className='container pb-5 mt-5'>
                 <div className='row'>
                     <div className='col-6'>
-                        <img className='imageInstBig' src={inst1} alt='instagram'/>
+                        <img className='imageInstBig' src={instaImages[0]} alt='instagram1' onClick={() => {
+                                openGallery(0);
+                            }}
+                        />
                     </div>
                     <div className='col-6 row'>
                         <div className='col-6 mb-3'>
-                            <img className='imageInstSmall' src={inst2} alt='instagram'/>
+                            <img className='imageInstSmall' src={instaImages[1]} alt='instagram2' onClick={() => {
+                                openGallery(1);
+                                }}
+                            />
                         </div>
                         <div className='col-6 mb-3'>
-                            <img className='imageInstSmall' src={inst3} alt='instagram'/>
+                            <img className='imageInstSmall' src={instaImages[2]} alt='instagram3' onClick={() => {
+                                openGallery(2);
+                                }}
+                            />
                         </div>
                         <div className='col-6 mt-3'>
-                            <img className='imageInstSmall' src={inst4} alt='instagram'/>
+                            <img className='imageInstSmall' src={instaImages[3]} alt='instagram4' onClick={() => {
+                                openGallery(3);
+                                }}
+                            />
                         </div>
                         <div className='col-6 mt-3'>
-                            <img className='imageInstSmall' src={inst5} alt='instagram'/>
+                            <img className='imageInstSmall' src={instaImages[4]} alt='instagram5' onClick={() => {
+                                openGallery(4);
+                                }}
+                            />
                         </div>
                     </div>
                 </div>
             </div>
+
+            <Context.Provider value = {
+                {isOpen, setIsOpen, currentPhoto, setCurrentPhoto}
+            }>
+             {isOpen ? <InstagramGallery/> : <div></div>}
+            </Context.Provider>
+
         </div>
     );
 };

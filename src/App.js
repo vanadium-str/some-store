@@ -7,10 +7,10 @@ import Products from './components/Products';
 import Instagram from './components/Instagram';
 import ContactUs from './components/ContactUs';
 import Footer from './components/Footer';
-
 function App() {
+
   return (
-    <div>
+      <div>
         <Header/>
         <Conception/>
         <Goods/>
@@ -19,7 +19,7 @@ function App() {
         <Instagram/>
         <ContactUs/>
         <Footer/>
-    </div>
+      </div>
   );
 }
 
